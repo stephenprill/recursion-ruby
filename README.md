@@ -2,7 +2,8 @@
 
 ## Background
 
-Recursion is a technique where a method can call itself.  Recursion can be used to traverse tree structures.  
+Recursion is a technique where a method can call itself.  Recursion can be used to traverse tree structures.
+
 For example, take the following tree, where each letter represents a node in the tree:
 
 ```
@@ -26,7 +27,7 @@ In this tree, we can say that
 * `C` has two child nodes: `[F, G]`
 * `G` has one child node:  `[H]`
 
-Let's say you wanted to go over the entire tree and print the letters out, you could write code like this: 
+Let's say you wanted to go over the entire tree and print the letters out, you could write code like this:
 
 ```ruby
 puts root.letter                                      # prints "A"
@@ -58,31 +59,53 @@ def print_letters(node)
 end
 ```
 
-## Challenge
+## Challenge #1
 
-Your mission, should you choose to accept it, is to make `node_walker_spec.rb` pass.
+Write a method that will `puts` out the names of each file in this directory recursively, indenting two spaces at each level.
 
-# Setup
+To get all the files in this directory, use:
 
-* Fork
-* Clone
-* Turn on TravisCI for the fork by
-  visiting https://travis-ci.org/profile/<github user name>, clicking the "Sync now" button
-  and scrolling down to find the repository to build.
-* Create a new branch for your work using `git checkout -b v1`
-* Implement specs and code
-* Push using `git push -u origin v1`
+```ruby
+Dir.glob("*") do |path|
+  # ...
+end
+```
 
-## Further Practice
+To determine if a file is a directory, use:
 
-This warmup can be completed multiple times to increase your comfort level with the material.
-To work on this from scratch, you can:
+```ruby
+File.directory?("some/path")
+```
 
-1. Add an upstream remote that points to the original repo `git remote add upstream git@github.com:gSchool/THIS-REPO.git`
-1. Fetch the latest from the upstream remote using `git fetch upstream`
-1. Create a new branch from the master branch of the upstream remote `git checkout -b v2 upstream/master`
-1. Implement specs and code
-1. Push using `git push -u origin v2`
+To get all the files in the folder `Desktop`, use:
 
-Each time you do the exercise, create a new branch. For example the 3rd time you do the exercise the branch
-name will be v3 instead of v2.
+```ruby
+Dir.glob("/Users/somename/Desktop/*") do |path|
+  # ...
+end
+```
+
+To get just the filename (not the full path), use:
+
+```ruby
+File.basename("/some/long/path.txt")
+```
+
+Read more here:
+
+* http://ruby-doc.org//core-2.2.0/File.html#method-c-size
+* http://ruby-doc.org/core-2.2.0/Dir.html#method-c-glob
+
+## Challenge #2
+
+Write a method that returns the total size of all the files in this directory.
+
+To get the size of an individual file, use:
+
+```ruby
+File.size('README.md')
+```
+
+## Challenge #3
+
+Make `node_walker_spec.rb` pass.
